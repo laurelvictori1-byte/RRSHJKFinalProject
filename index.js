@@ -57,4 +57,4 @@ document.addEventListener("keyup", (event) => {
     leftPress = false;
   }
 })
-requestAnimationFrame(gameLoop);
+//requestAnimationFrame(gameLoop);
