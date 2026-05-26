@@ -11,7 +11,12 @@ const goober = {
 const canvas = document.getElementById("canvas");
 const ctx = canvas.getContext("2d");
 
+const start = document.getElementById("start")
 
+start.addEventListener('click', () =>{
+    start.style.display = "none";
+    requestAnimationFrame(gameLoop);
+});
 function addPlayer(){ // green square for now. will replace with actual player image
     ctx.fillStyle = "green";
     ctx.fillRect(goober.x, goober.y, goober.width, goober.height)
@@ -28,7 +33,6 @@ function movePlayer(){
         goober.x -= goober.speed;
     }
 }
-
 
 function gameLoop(){
     ctx.clearRect(0, 0, canvas.width, canvas.height);
