@@ -13,9 +13,9 @@ const goober = {
 const canvas = document.getElementById("canvas");
 const ctx = canvas.getContext("2d");
 
-const start = document.getElementById("start")
-const option = document.getElementById("option")
-const menu = document.getElementById("menu")
+const start = document.getElementById("start");
+const option = document.getElementById("option");
+const box = document.querySelector(".box");
 
 const backgroundImage = new Image();
 backgroundImage.src = "images/NYC-Menu-Background-Resized.png"; 
@@ -34,7 +34,7 @@ backgroundImage.onload = function() {
 start.addEventListener('click', () =>{
     start.style.display = "none";
     option.style.display = "none";
-    menu.style.display = "none";
+    box.style.display = "none";
     requestAnimationFrame(gameLoop);
 });
 function addPlayer(){ // green square for now. will replace with actual player image

@@ -3,16 +3,21 @@ canvas{
 }
 .box{
   position: absolute;
-  top: 0px;
+  background: rgb(197, 176, 145);
+  width: 450px;
+  height: 400px;
+  margin: 50px auto;
+  top: 200px;
   left: 500px;
+  border-radius: 20px;
 }
 
 .buttons{
   position: absolute;
   display: flex;
   flex-direction: column;
-  top: 320px;
-  left: 140px;
+  top: 100px;
+  left: 155px;
   gap: 30px;
   img{
      height: 100px;
