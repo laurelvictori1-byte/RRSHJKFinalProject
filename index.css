@@ -16,11 +16,26 @@ canvas{
   position: absolute;
   display: flex;
   flex-direction: column;
-  top: 100px;
-  left: 155px;
-  gap: 30px;
+  top: 30px;
+  left: 160px;
+  gap: 20px;
   img{
-     height: 100px;
+     height: 95px;
   }
+}
+
+#menu{
+  position: absolute;
+  display:none;
+  top: 10px;
+  left: 510px;
+}
+
+#back{
+  display:none;
+}
+
+#backGame{
+  display:none;
 }
 

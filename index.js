@@ -17,6 +17,10 @@ const start = document.getElementById("start");
 const option = document.getElementById("option");
 const box = document.querySelector(".box");
 
+const menu = document.getElementById("menu");
+const exit = document.getElementById("exit");
+const back = document.getElementById("back");
+const backGame = document.getElementById("backGame");
 const backgroundImage = new Image();
 backgroundImage.src = "images/NYC-Menu-Background-Resized.png"; 
 
@@ -31,11 +35,31 @@ backgroundImage.onload = function() {
   //  hover.play();
 //});
 
+let ani;
+option.addEventListener('click', () =>{
+  menu.style.display = "block";
+  box.style.display = "none";
+  back.style.display = "block";
+});
+
 start.addEventListener('click', () =>{
-    start.style.display = "none";
-    option.style.display = "none";
     box.style.display = "none";
+    backGame.style.display = "block";
     requestAnimationFrame(gameLoop);
+});
+
+backGame.addEventListener('click', () =>{
+  backGame.style.display = "none";
+  box.style.display = "block";
+  cancelAnimationFrame(ani);
+  ctx.clearRect(0, 0, canvas.width, canvas.height); 
+  ctx.drawImage(backgroundImage, 0, 0, canvas.width, canvas.height);
+
+});
+back.addEventListener('click', () =>{
+  back.style.display = "none";
+  menu.style.display = "none";
+  box.style.display = "block";
 });
 function addPlayer(){ // green square for now. will replace with actual player image
     ctx.fillStyle = "green";
@@ -73,8 +97,11 @@ function gameLoop(){
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     movePlayer();
     addPlayer();
-    requestAnimationFrame(gameLoop);
+    ani = requestAnimationFrame(gameLoop);
 };
+function stopGameLoop() {
+  cancelAnimationFrame(ani);
+}
 document.addEventListener("keydown", (event) => {
 
   if (event.code === "ArrowRight") {
