@@ -10,13 +10,20 @@ const goober = {
     // jump here i dont know
     // add name if we want to track
 };
+
 const object = { //initializes an object for collision-- should rename
+  x: 700,
+  y: 0,
+  height: 500,
+  width: 50,
+}
+
+const object2 = {
   x: 500,
   y: 500,
   height: 500,
   width: 50,
 }
-
 const canvas = document.getElementById("canvas");
 const ctx = canvas.getContext("2d");
 
@@ -82,9 +89,15 @@ function addObject(){
   ctx.fillRect(object.x, object.y, object.width, object.height);
 }
 
+function addObject2(){
+  ctx.fillStyle = "red";
+  ctx.fillRect(object2.x, object2.y, object2.width, object2.height);
+}
 let rightPress = false;
 let leftPress = false;
 let jumpPress = false;
+let downPress = false;
+let upPress = false;
 
 //let jumpHeight = 100;
 //let jumpTime = 50;
@@ -96,13 +109,19 @@ let jumpPress = false;
     //let jumpSpeed = -(sqr(2*jumpHeight*gravity));
     
 //}
-function movePlayer(){
+function movePlayer(){ // have movement using up and down for now until jump mechanic is figured out
     if(rightPress && goober.x < canvas.width- goober.width) {
         goober.x += goober.speed;
     }
    if(leftPress && goober.x > 0) {
         goober.x -= goober.speed;
     }
+    if(downPress && goober.y < canvas.height - goober.height) {
+    goober.y += goober.speed;
+  }
+  if(upPress && goober.y > 0){
+   goober.y -= goober.speed;
+ }
     
     //formula for jumping: gravity = (2*max jump height)/jump time^2
     //  jump speed = -(sqr(2*jump height*gravity))
@@ -114,6 +133,7 @@ function gameLoop(){
     movePlayer();
     addPlayer();
     addObject();
+    addObject2();
     ani = requestAnimationFrame(gameLoop);
 };
 
@@ -132,6 +152,12 @@ document.addEventListener("keydown", (event) => {
   if (event.code === "Space") {
     jumpPress = true;
   }
+  if (event.code === "ArrowDown") {
+    downPress = true;
+  }
+  if (event.code === "ArrowUp") {
+    upPress = true;
+  }
 });
 
 
@@ -144,6 +170,12 @@ document.addEventListener("keyup", (event) => {
   }
   if( event.code === "Space") {
     jumpPress = false;
+  }
+  if (event.code === "ArrowDown") {
+    downPress = false;
+  }
+   if (event.code === "ArrowUp") {
+    upPress = false;
   }
 })
 //requestAnimationFrame(gameLoop);

@@ -36,6 +36,9 @@ canvas{
 }
 
 #backGame{
+  position:absolute;
   display:none;
+  top: 30px;
 }
+
 
