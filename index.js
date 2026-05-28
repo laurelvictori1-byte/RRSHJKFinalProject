@@ -1,3 +1,4 @@
+// initializes our main character--goober
 const goober = {
     x: 0,
     y: 730,
@@ -9,21 +10,28 @@ const goober = {
     // jump here i dont know
     // add name if we want to track
 };
+const object = { //initializes an object for collision-- should rename
+  x: 500,
+  y: 500,
+  height: 500,
+  width: 50,
+}
 
 const canvas = document.getElementById("canvas");
 const ctx = canvas.getContext("2d");
 
+// getting a bunch of stuff from html file
 const start = document.getElementById("start");
 const option = document.getElementById("option");
 const box = document.querySelector(".box");
-
 const menu = document.getElementById("menu");
 const exit = document.getElementById("exit");
 const back = document.getElementById("back");
 const backGame = document.getElementById("backGame");
+
+//draws our background image onto our canvas
 const backgroundImage = new Image();
 backgroundImage.src = "images/NYC-Menu-Background-Resized.png"; 
-
 backgroundImage.onload = function() {
   ctx.drawImage(backgroundImage, 0, 0, canvas.width, canvas.height);
 };
@@ -36,12 +44,14 @@ backgroundImage.onload = function() {
 //});
 
 let ani;
+// when we clock option, only menu and back button is present, set box to none
 option.addEventListener('click', () =>{
   menu.style.display = "block";
-  box.style.display = "none";
+  box.style.display = "none"; //box = main screen box content
   back.style.display = "block";
 });
 
+//when we press start, go to gameLoop and backgame button is now present
 start.addEventListener('click', () =>{
     box.style.display = "none";
     backGame.style.display = "block";
@@ -56,6 +66,7 @@ backGame.addEventListener('click', () =>{
   ctx.drawImage(backgroundImage, 0, 0, canvas.width, canvas.height);
 
 });
+
 back.addEventListener('click', () =>{
   back.style.display = "none";
   menu.style.display = "none";
@@ -63,7 +74,12 @@ back.addEventListener('click', () =>{
 });
 function addPlayer(){ // green square for now. will replace with actual player image
     ctx.fillStyle = "green";
-    ctx.fillRect(goober.x, goober.y, goober.width, goober.height)
+    ctx.fillRect(goober.x, goober.y, goober.width, goober.height);
+}
+
+function addObject(){
+  ctx.fillStyle = "black";
+  ctx.fillRect(object.x, object.y, object.width, object.height);
 }
 
 let rightPress = false;
@@ -73,7 +89,7 @@ let jumpPress = false;
 //let jumpHeight = 100;
 //let jumpTime = 50;
 //let gravity = (2*jumpHeight)/jumpTime**2;
-//let jumpSpeed = -(sqr(2*jumpHeight*gravity));
+//let jumpSpeed = -(sqr(2*jumpHeight*gravity)); 
 
 //function gooberJump(){//doesnt work, just vanishes
    // let gravity = (2*jumpHeight)/pow(jumpTime, 2);
@@ -97,8 +113,11 @@ function gameLoop(){
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     movePlayer();
     addPlayer();
+    addObject();
     ani = requestAnimationFrame(gameLoop);
 };
+
+
 function stopGameLoop() {
   cancelAnimationFrame(ani);
 }
@@ -114,6 +133,8 @@ document.addEventListener("keydown", (event) => {
     jumpPress = true;
   }
 });
+
+
 document.addEventListener("keyup", (event) => {
   if (event.code === "ArrowRight") {
     rightPress = false;
