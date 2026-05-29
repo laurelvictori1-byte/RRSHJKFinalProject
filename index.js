@@ -1,3 +1,4 @@
+
 // initializes our main character--goober
 const goober = {
     x: 0,
@@ -6,24 +7,28 @@ const goober = {
     width: 50,
     speed: 10,
     jumping: false,
-    yVelocity: 0,
+    yVelocity: 0, //goober jump speed
+    jHeight: 100,
     // jump here i dont know
     // add name if we want to track
 };
 
-const object = { //initializes an object for collision-- should rename
+let object = [
+  { //initializes an object for collision-- should rename
   x: 700,
   y: 0,
   height: 500,
   width: 50,
-}
+  },
+  {
+    x: 500,
+    y: 500,
+    height: 500,
+    width: 50,
+  }
+  
+];
 
-const object2 = {
-  x: 500,
-  y: 500,
-  height: 500,
-  width: 50,
-}
 const canvas = document.getElementById("canvas");
 const ctx = canvas.getContext("2d");
 
@@ -42,13 +47,6 @@ backgroundImage.src = "images/NYC-Menu-Background-Resized.png";
 backgroundImage.onload = function() {
   ctx.drawImage(backgroundImage, 0, 0, canvas.width, canvas.height);
 };
-
-
-//sound-- not working 
-//const hover = document.getElementById("hover");
-//hover.addEventListener("mouseenter", (event) => {
-  //  hover.play();
-//});
 
 let ani;
 // when we clock option, only menu and back button is present, set box to none
@@ -86,29 +84,23 @@ function addPlayer(){ // green square for now. will replace with actual player i
 
 function addObject(){
   ctx.fillStyle = "black";
-  ctx.fillRect(object.x, object.y, object.width, object.height);
+  object.forEach((object) => {
+    ctx.fillRect(object.x, object.y, object.width, object.height);
+  });
 }
 
-function addObject2(){
-  ctx.fillStyle = "red";
-  ctx.fillRect(object2.x, object2.y, object2.width, object2.height);
-}
+
+
+
 let rightPress = false;
 let leftPress = false;
 let jumpPress = false;
-let downPress = false;
-let upPress = false;
 
-//let jumpHeight = 100;
-//let jumpTime = 50;
-//let gravity = (2*jumpHeight)/jumpTime**2;
-//let jumpSpeed = -(sqr(2*jumpHeight*gravity)); 
+let initialVelocity = -8;
+goober.y == initialVelocity;
+let gravity = 0.4;
 
-//function gooberJump(){//doesnt work, just vanishes
-   // let gravity = (2*jumpHeight)/pow(jumpTime, 2);
-    //let jumpSpeed = -(sqr(2*jumpHeight*gravity));
-    
-//}
+
 function movePlayer(){ // have movement using up and down for now until jump mechanic is figured out
     if(rightPress && goober.x < canvas.width- goober.width) {
         goober.x += goober.speed;
@@ -116,30 +108,20 @@ function movePlayer(){ // have movement using up and down for now until jump mec
    if(leftPress && goober.x > 0) {
         goober.x -= goober.speed;
     }
-    if(downPress && goober.y < canvas.height - goober.height) {
-    goober.y += goober.speed;
-  }
-  if(upPress && goober.y > 0){
-   goober.y -= goober.speed;
+ if(jumpPress && !goober.jumping){ // if goober is not jumping and we are pressing space then
+   goober.yVelocity = -Math.sqrt(2* goober.jHeight *gravity); // we calculate jumpspeed or like the velocity of y
+    goober.jumping = true; // and then set jumping to true
+
  }
-    
-    //formula for jumping: gravity = (2*max jump height)/jump time^2
-    //  jump speed = -(sqr(2*jump height*gravity))
- 
-}
+   // add gravity to move down
+  goober.yVelocity += gravity;
+  goober.y += goober.yVelocity;
+ if(goober.y > canvas.height - goober.height){ // check for bottom bound. if y goes past this point
+  goober.y = canvas.height - goober.height; // then we set the y position to that
+  goober.jumping = false; // jumping bCK TO false
+  goober.yVelocity = 0; // and recent the velocity 
+ }
 
-function gameLoop(){
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    movePlayer();
-    addPlayer();
-    addObject();
-    addObject2();
-    ani = requestAnimationFrame(gameLoop);
-};
-
-
-function stopGameLoop() {
-  cancelAnimationFrame(ani);
 }
 document.addEventListener("keydown", (event) => {
 
@@ -151,12 +133,6 @@ document.addEventListener("keydown", (event) => {
   }
   if (event.code === "Space") {
     jumpPress = true;
-  }
-  if (event.code === "ArrowDown") {
-    downPress = true;
-  }
-  if (event.code === "ArrowUp") {
-    upPress = true;
   }
 });
 
@@ -171,11 +147,34 @@ document.addEventListener("keyup", (event) => {
   if( event.code === "Space") {
     jumpPress = false;
   }
-  if (event.code === "ArrowDown") {
-    downPress = false;
-  }
-   if (event.code === "ArrowUp") {
-    upPress = false;
-  }
 })
+
+/*
+Understanding collision for x axis:
+if a is greater than position b-- .x and .width position then overlap-- collision is detected
+if a is less than position b(b.x +b.width) then overlap 
+*/
+
+function collision(goober, object){
+  object.forEach((object) => {
+  if(goober.x + goober.width >= object.x && goober.x <= object.width + object.x){
+    console.log('colliding');
+  }
+});
+
+}
+function gameLoop(){
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    movePlayer();
+    addPlayer();
+    addObject();
+    collision(goober, object)
+    ani = requestAnimationFrame(gameLoop);
+};
+
+
+function stopGameLoop() {
+  cancelAnimationFrame(ani);
+}
+
 //requestAnimationFrame(gameLoop);
