@@ -13,7 +13,7 @@ const goober = {
     // add name if we want to track
 };
 
-let object = [
+const object = [
   { //initializes an object for collision-- should rename
   x: 700,
   y: 0,
@@ -159,6 +159,17 @@ function collision(goober, object){
   object.forEach((object) => {
   if(goober.x + goober.width >= object.x && goober.x <= object.width + object.x){
     console.log('colliding');
+ document.addEventListener("keydown", (event) => {
+    if (event.code === "ArrowRight") {
+     rightPress = false;
+    }
+  });
+  } else{
+    document.addEventListener("keydown", (event) => {
+    if (event.code === "ArrowRight") {
+     rightPress = true;
+    }
+  });
   }
 });
 
