@@ -156,23 +156,21 @@ if a is less than position b(b.x +b.width) then overlap
 */
 
 function collision(goober, object){
+  let colliding = false;
   object.forEach((object) => {
   if(goober.x + goober.width >= object.x && goober.x <= object.width + object.x){
     console.log('colliding');
- document.addEventListener("keydown", (event) => {
-    if (event.code === "ArrowRight") {
-     rightPress = false;
-    }
-  });
-  } else{
-    document.addEventListener("keydown", (event) => {
-    if (event.code === "ArrowRight") {
-     rightPress = true;
-    }
-  });
-  }
+    colliding = true;
+  } 
 });
-
+  if(colliding){
+       document.addEventListener("keydown", (event) => {
+        if (event.code === "ArrowRight") {
+          rightPress = false;
+        }
+      });
+    }
+  
 }
 function gameLoop(){
     ctx.clearRect(0, 0, canvas.width, canvas.height);
