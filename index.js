@@ -72,11 +72,6 @@ const obstacles = [
 const canvas = document.getElementById("canvas");
 const ctx = canvas.getContext("2d");
 
-function scrollWrapper(x,y){
-  let wrapper = document.getElementById('wrapper');
-    wrapper.scrollTop = x;
-    wrapper.scrollLeft = y;
-}
 
 
 // getting a bunch of stuff from html file
@@ -255,15 +250,38 @@ function detection(object){
   }
 }
 
+function collisionObstacle(object){ 
+  let colliding = false;
+  obstacles.forEach((obstacles) => {
+  if(goober.x + goober.width >= obstacles.x && goober.x <= obstacles.width + obstacles.x && goober.y + goober.height >= obstacles.y && goober.y <= obstacles.y + obstacles.height){
+    console.log('colliding'); // shows us that its colliding in our console
+    colliding = true;
+    detectObstacle(object); // call the collision detection 
+  
+  } 
+ });
+  return colliding;
+}
+
+
+function detectObstacle(object){
+  console.log('game over');
+}
+
 
 function gameLoop(){
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
+  const backgroundImage = new Image();
+  backgroundImage.src = "images/NYC-Background.png"; 
+  backgroundImage.onload = function() {
+    ctx.drawImage(backgroundImage, 0, 0, canvas.width, canvas.height);
+  };
+   // ctx.clearRect(0, 0, canvas.width, canvas.height);
     moveGoober();
     addGoober();
     addObject();
     addObstacle();
     collision(object);
-    scrollWrapper(canvas.x, canvas.y);
+    collisionObstacle(obstacles)
     ani = requestAnimationFrame(gameLoop);
 };
 
