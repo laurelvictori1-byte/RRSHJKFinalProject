@@ -42,6 +42,18 @@ canvas{
   left: 35vw;
 }
 
+.audiocontainer {
+  width: 100%;
+  position: absolute;
+  bottom: 57vh;
+  left: 2vw;
+}
+
+.slider {
+  width: 60%; 
+  height: 1vh; 
+}
+
 #back{
   display:none;
 }
