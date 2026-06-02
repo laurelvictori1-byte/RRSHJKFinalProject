@@ -37,8 +37,25 @@ const object = [
   
 ];
 
+const obstacles = [
+  {
+    x: 600,
+    y: 0,
+    height: 500,
+    width: 50,
+  }
+]
+
+
 const canvas = document.getElementById("canvas");
 const ctx = canvas.getContext("2d");
+
+function scrollWrapper(x,y){
+  let wrapper = document.getElementById('wrapper');
+    wrapper.scrollTop = x;
+    wrapper.scrollLeft = y;
+}
+
 
 // getting a bunch of stuff from html file
 const start = document.getElementById("start");
@@ -100,7 +117,12 @@ function addObject(){
   });
 }
 
-
+function addObstacle(){
+  ctx.fillStyle = "red";
+  obstacles.forEach((obstacles) => {
+    ctx.fillRect(obstacles.x, obstacles.y, obstacles.width, obstacles.height);
+  });
+}
 
 // track if we are pressing our keys
 let rightPress = false;
@@ -186,7 +208,6 @@ function collision(object){
 
  return colliding;
 }
-
 // detect overlap then push goober out 
 function detection(object){
   //checks for overlap
@@ -210,14 +231,17 @@ function detection(object){
   if((goober.x <= object.x + object.width && goober.x + goober.width > object.x + object.width) && (left < top && left < bottom)){
       goober.x = object.x + object.width;
   }
-
 }
+
+
 function gameLoop(){
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     moveGoober();
     addGoober();
     addObject();
-    collision(object)
+    addObstacle();
+    collision(object);
+    scrollWrapper(canvas.x, canvas.y);
     ani = requestAnimationFrame(gameLoop);
 };
 
