@@ -1,5 +1,10 @@
 canvas{
         border: 1px solid black;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+        height: 96.3vh;
+        width: 99vw;
 }
 .box{
   position: absolute;
@@ -7,8 +12,8 @@ canvas{
   width: 450px;
   height: 400px;
   margin: 50px auto;
-  top: 200px;
-  left: 500px;
+  top: 70px;
+  left: 465px;
   border-radius: 20px;
 }
 
@@ -27,7 +32,7 @@ canvas{
 #menu{
   position: absolute;
   display:none;
-  top: 10px;
+  bottom: 20px;  
   left: 510px;
 }
 

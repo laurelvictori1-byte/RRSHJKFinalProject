@@ -1,9 +1,9 @@
 
 // initializes our main character--goober
 const goober = {
-    x: 0, // x and y starting positoin on canvas
+    x: 0, // x and y starting position on canvas
     y: 730,
-    height: 50,
+    height: 60,
     width: 50,
     speed: 5,
     jumping: false,
