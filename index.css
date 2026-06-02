@@ -3,6 +3,7 @@ body{
   background-color: black;
 }
 canvas{
+<<<<<<< HEAD
   background-color: aliceblue;
   background-image: url(images/NYC-Background.png); 
         border: 1px solid black;
@@ -11,35 +12,44 @@ canvas{
         background-position: center;
         height: 96.3vh;
         width: 99vw;
+=======
+    border: 0.1vh solid black;
+    color: black;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 96.3vh;
+    width: 99vw;
+>>>>>>> ab9ffebf5092388d4d3ab33f26bcd1838578b87a
 }
 .box{
   position: absolute;
   background: rgb(197, 176, 145);
-  width: 450px;
-  height: 400px;
-  margin: 50px auto;
-  top: 70px;
-  left: 465px;
-  border-radius: 20px;
+  width: 33vw;
+  height: 69vh;
+  margin: 3vh auto;
+  top: 11.5vh;
+  left: 34vw;
+  border-radius: 2vw;
 }
 
 .buttons{
   position: absolute;
   display: flex;
   flex-direction: column;
-  top: 30px;
-  left: 160px;
-  gap: 20px;
+  top: 5vh;
+  left: 12vw;
+  gap: 3.5vh;
   img{
-     height: 95px;
+     height: 16vh;
   }
 }
 
 #menu{
   position: absolute;
   display:none;
-  bottom: 20px;  
-  left: 510px;
+  bottom: 6vh;  
+  left: 35vw;
 }
 
 #back{
@@ -50,7 +60,5 @@ canvas{
   
   position:absolute;
   display:none;
-  top: 30px;
+  top: 5vh;
 }
-
-

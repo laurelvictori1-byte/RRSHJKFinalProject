@@ -2,65 +2,60 @@
 // initializes our main character--goober
 const goober = {
     x: 0, // x and y starting position on canvas
-    y: 730,
-    height: 60,
-    width: 50,
+    y: 680,
+    height: 40,
+    width: 30,
     speed: 5,
     jumping: false,
     yVelocity: 0, //goober jump speed
-    jHeight: 100, // jump height
+    jHeight: 90, // jump height
     // add name if we want to track for a storyline maybe
 };
 
 const object = [
   { //initializes our platforms-- maybe rename
-  x: 700,
-  y: 0,
-  height: 500,
-  width: 50,
-  },
-  {
-    x: 500,
-    y: 500,
-    height: 500,
-    width: 50,
-  },
-  {
-    x:100,
-    y: 750,
-    height: 50,
-    width: 50,
-  },
-  {
-    x:200,
-    y: 700,
-    height: 100,
-    width: 50,
-  },
-   { 
-  x: 400,
-  y: 0,
+  x: 0,
+  y: 700,
   height: 300,
-  width: 50,
+  width: 250,
   },
   {
-  x: 300,
-  y: 650,
-  height: 150,
-  width: 50,
+  x: 450,
+  y: 720,
+  height: 25,
+  width: 140,
   },
   {
-    x: 400,
-  y: 600,
-  height: 300,
-  width: 50,
-  }
+  x: 650,
+  y: 670,
+  height: 25,
+  width: 60,
+  },
+
+
   
   
 ];
 
+const obstacles = [
+  {
+    x: 600,
+    y: 0,
+    height: 500,
+    width: 50,
+  }
+]
+
+
 const canvas = document.getElementById("canvas");
 const ctx = canvas.getContext("2d");
+
+function scrollWrapper(x,y){
+  let wrapper = document.getElementById('wrapper');
+    wrapper.scrollTop = x;
+    wrapper.scrollLeft = y;
+}
+
 
 // getting a bunch of stuff from html file
 const start = document.getElementById("start");
@@ -122,7 +117,12 @@ function addObject(){
   });
 }
 
-
+function addObstacle(){
+  ctx.fillStyle = "red";
+  obstacles.forEach((obstacles) => {
+    ctx.fillRect(obstacles.x, obstacles.y, obstacles.width, obstacles.height);
+  });
+}
 
 // track if we are pressing our keys
 let rightPress = false;
@@ -208,7 +208,6 @@ function collision(object){
 
  return colliding;
 }
-
 // detect overlap then push goober out 
 function detection(object){
   //checks for overlap
@@ -232,14 +231,17 @@ function detection(object){
   if((goober.x <= object.x + object.width && goober.x + goober.width > object.x + object.width) && (left < top && left < bottom)){
       goober.x = object.x + object.width;
   }
-
 }
+
+
 function gameLoop(){
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     moveGoober();
     addGoober();
     addObject();
-    collision(object)
+    addObstacle();
+    collision(object);
+    scrollWrapper(canvas.x, canvas.y);
     ani = requestAnimationFrame(gameLoop);
 };
 
