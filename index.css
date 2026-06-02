@@ -56,10 +56,17 @@ html {
   left: 35vw;
 }
 
-.audiocontainer {
+.musiccontainer {
   width: 100%;
   position: absolute;
   bottom: 55vh;
+  left: 2vw;
+}
+
+.sfxcontainer {
+  width: 100%;
+  position: absolute;
+  bottom: 50vh;
   left: 2vw;
 }
 
