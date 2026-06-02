@@ -31,6 +31,18 @@ const object = [
   height: 25,
   width: 60,
   },
+  {
+  x: 750,
+  y: 630,
+  height: 25,
+  width: 90,
+  },
+  {
+  x: 870,
+  y: 715,
+  height: 25,
+  width: 130,
+  },
 
 
   
