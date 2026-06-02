@@ -1,20 +1,19 @@
 
 // initializes our main character--goober
 const goober = {
-    x: 0,
+    x: 0, // x and y starting positoin on canvas
     y: 730,
     height: 50,
     width: 50,
-    speed: 10,
+    speed: 5,
     jumping: false,
     yVelocity: 0, //goober jump speed
-    jHeight: 100,
-    // jump here i dont know
-    // add name if we want to track
+    jHeight: 100, // jump height
+    // add name if we want to track for a storyline maybe
 };
 
 const object = [
-  { //initializes an object for collision-- should rename
+  { //initializes our platforms-- maybe rename
   x: 700,
   y: 0,
   height: 500,
@@ -25,7 +24,38 @@ const object = [
     y: 500,
     height: 500,
     width: 50,
+  },
+  {
+    x:100,
+    y: 750,
+    height: 50,
+    width: 50,
+  },
+  {
+    x:200,
+    y: 700,
+    height: 100,
+    width: 50,
+  },
+   { 
+  x: 400,
+  y: 0,
+  height: 300,
+  width: 50,
+  },
+  {
+  x: 300,
+  y: 650,
+  height: 150,
+  width: 50,
+  },
+  {
+    x: 400,
+  y: 600,
+  height: 300,
+  width: 50,
   }
+  
   
 ];
 
@@ -48,8 +78,10 @@ backgroundImage.onload = function() {
   ctx.drawImage(backgroundImage, 0, 0, canvas.width, canvas.height);
 };
 
+
 let ani;
-// when we clock option, only menu and back button is present, set box to none
+
+// when we click option, only menu and back button is present, set box to none
 option.addEventListener('click', () =>{
   menu.style.display = "block";
   box.style.display = "none"; //box = main screen box content
@@ -62,7 +94,7 @@ start.addEventListener('click', () =>{
     backGame.style.display = "block";
     requestAnimationFrame(gameLoop);
 });
-
+// goes back to title screen. BUG: Doesnt reset game only brings you back
 backGame.addEventListener('click', () =>{
   backGame.style.display = "none";
   box.style.display = "block";
@@ -72,16 +104,17 @@ backGame.addEventListener('click', () =>{
 
 });
 
+// the back button taking us out of our options menu 
 back.addEventListener('click', () =>{
   back.style.display = "none";
   menu.style.display = "none";
   box.style.display = "block";
 });
-function addPlayer(){ // green square for now. will replace with actual player image
+
+function addGoober(){ // green square for now. will replace with actual goober image
     ctx.fillStyle = "green";
     ctx.fillRect(goober.x, goober.y, goober.width, goober.height);
 }
-
 function addObject(){
   ctx.fillStyle = "black";
   object.forEach((object) => {
@@ -91,18 +124,18 @@ function addObject(){
 
 
 
-
+// track if we are pressing our keys
 let rightPress = false;
 let leftPress = false;
 let jumpPress = false;
 
-let initialVelocity = -8;
-goober.y == initialVelocity;
-let gravity = 0.4;
+
+let gravity = 0.4; //sets our gravity to bring goober back down
 
 
-function movePlayer(){ // have movement using up and down for now until jump mechanic is figured out
-    if(rightPress && goober.x < canvas.width- goober.width) {
+function moveGoober(){ // have movement using up and down for now until jump mechanic is figured out
+  
+    if(rightPress && goober.x < canvas.width- goober.width ) {
         goober.x += goober.speed;
     }
    if(leftPress && goober.x > 0) {
@@ -113,9 +146,11 @@ function movePlayer(){ // have movement using up and down for now until jump mec
     goober.jumping = true; // and then set jumping to true
 
  }
+
    // add gravity to move down
-  goober.yVelocity += gravity;
-  goober.y += goober.yVelocity;
+  goober.yVelocity += gravity; // add gravity to yVelocity
+  goober.y += goober.yVelocity; // then add new velocity to y position bringing goober down
+
  if(goober.y > canvas.height - goober.height){ // check for bottom bound. if y goes past this point
   goober.y = canvas.height - goober.height; // then we set the y position to that
   goober.jumping = false; // jumping bCK TO false
@@ -123,6 +158,7 @@ function movePlayer(){ // have movement using up and down for now until jump mec
  }
 
 }
+// when we press the key, we set our variables to true
 document.addEventListener("keydown", (event) => {
 
   if (event.code === "ArrowRight") {
@@ -136,7 +172,7 @@ document.addEventListener("keydown", (event) => {
   }
 });
 
-
+// when we lift up from our key, we set our variables to false
 document.addEventListener("keyup", (event) => {
   if (event.code === "ArrowRight") {
     rightPress = false;
@@ -153,31 +189,57 @@ document.addEventListener("keyup", (event) => {
 Understanding collision for x axis:
 if a is greater than position b-- .x and .width position then overlap-- collision is detected
 if a is less than position b(b.x +b.width) then overlap 
+
+Understanding collision for y axis
+if a + height is greater than b.y and 
+if a.y is less than b.y + b.height
 */
 
-function collision(goober, object){
+function collision(object){ 
   let colliding = false;
   object.forEach((object) => {
-  if(goober.x + goober.width >= object.x && goober.x <= object.width + object.x){
-    console.log('colliding');
+  if(goober.x + goober.width >= object.x && goober.x <= object.width + object.x&&goober.y + goober.height >= object.y && goober.y <= object.y + object.height){
+    console.log('colliding'); // shows us that its colliding in our console
     colliding = true;
-  } 
-});
-  if(colliding){
-       document.addEventListener("keydown", (event) => {
-        if (event.code === "ArrowRight") {
-          rightPress = false;
-        }
-      });
-    }
+     detection(object); // call the collision detection 
   
+  } 
+ });
+
+ return colliding;
+}
+
+// detect overlap then push goober out 
+function detection(object){
+  //checks for overlap
+  let top = Math.abs(goober.y - (object.y + object.height)); // player top obj bottom
+  let right = Math.abs((goober.x + goober.width) - object.x); // player right obj left
+  let left = Math.abs((goober.x-(object.x+object.width)));//etc
+  let bottom = Math.abs((goober.y + goober.height) - object.y); //etc
+  
+  if ((goober.y <= object.y + object.height && goober.y + goober.height > object.y + object.height) && (top < right&& top < left)){
+       goober.y = object.y + object.height;
+      goober.yVelocity = 0;
+  }
+  if((goober.y + goober.height >= object.y && goober.y < object.y) && (bottom < right && bottom < left)){
+      goober.y = object.y - goober.height; 
+      goober.jumping = false;
+      goober.yVelocity = 0;
+  }
+  if((goober.x + goober.width >= object.x && goober.x < object.x) && (right < top && right < bottom)){
+      goober.x = object.x - goober.width;
+  }
+  if((goober.x <= object.x + object.width && goober.x + goober.width > object.x + object.width) && (left < top && left < bottom)){
+      goober.x = object.x + object.width;
+  }
+
 }
 function gameLoop(){
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-    movePlayer();
-    addPlayer();
+    moveGoober();
+    addGoober();
     addObject();
-    collision(goober, object)
+    collision(object)
     ani = requestAnimationFrame(gameLoop);
 };
 
