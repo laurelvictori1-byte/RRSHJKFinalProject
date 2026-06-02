@@ -3,7 +3,6 @@ body{
   background-color: black;
 }
 canvas{
-<<<<<<< HEAD
   background-color: aliceblue;
   background-image: url(images/NYC-Background.png); 
         border: 1px solid black;
@@ -12,15 +11,6 @@ canvas{
         background-position: center;
         height: 96.3vh;
         width: 99vw;
-=======
-    border: 0.1vh solid black;
-    color: black;
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-    height: 96.3vh;
-    width: 99vw;
->>>>>>> ab9ffebf5092388d4d3ab33f26bcd1838578b87a
 }
 .box{
   position: absolute;
