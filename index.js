@@ -266,8 +266,17 @@ function collisionObstacle(object){
 
 function detectObstacle(object){
   console.log('game over');
+  gameOver();
 }
 
+function gameOver(){
+  cancelAnimationFrame(ani);
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  ctx.font = "50px Arial";
+  ctx.fillStyle = "red";
+  ctx.textAlign = "center";
+  ctx.fillText("Game Over", canvas.width / 2, canvas.height / 2);
+}
 
 function gameLoop(){
   const backgroundImage = new Image();
