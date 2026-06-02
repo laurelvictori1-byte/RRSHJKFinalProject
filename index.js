@@ -2,59 +2,37 @@
 // initializes our main character--goober
 const goober = {
     x: 0, // x and y starting position on canvas
-    y: 730,
-    height: 60,
-    width: 50,
+    y: 680,
+    height: 40,
+    width: 30,
     speed: 5,
     jumping: false,
     yVelocity: 0, //goober jump speed
-    jHeight: 100, // jump height
+    jHeight: 90, // jump height
     // add name if we want to track for a storyline maybe
 };
 
 const object = [
   { //initializes our platforms-- maybe rename
-  x: 700,
-  y: 0,
-  height: 500,
-  width: 50,
-  },
-  {
-    x: 500,
-    y: 500,
-    height: 500,
-    width: 50,
-  },
-  {
-    x:100,
-    y: 750,
-    height: 50,
-    width: 50,
-  },
-  {
-    x:200,
-    y: 700,
-    height: 100,
-    width: 50,
-  },
-   { 
-  x: 400,
-  y: 0,
+  x: 0,
+  y: 700,
   height: 300,
-  width: 50,
+  width: 250,
   },
   {
-  x: 300,
-  y: 650,
-  height: 150,
-  width: 50,
+  x: 450,
+  y: 720,
+  height: 25,
+  width: 140,
   },
   {
-    x: 400,
-  y: 600,
-  height: 300,
-  width: 50,
-  }
+  x: 650,
+  y: 670,
+  height: 25,
+  width: 60,
+  },
+
+
   
   
 ];
