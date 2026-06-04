@@ -15,6 +15,11 @@
 
 
   <script src="index.js" defer></script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bitcount+Grid+Double:wght@100..900&family=Rubik+Iso&display=swap" rel="stylesheet">
+
 </head>
 
 <body>
@@ -23,6 +28,13 @@
     </div>
     <div id = "menu">
             <img src = "images/Options-Menu.png">
+                <div class="musiccontainer">
+                Music: <input type="range" min="1" max="100" value="75" class="slider" id="musicslider">
+                </div>
+
+                <div class="sfxcontainer">
+                Sound: <input type="range" min="1" max="100" value="75" class="slider" id="sfxslider">
+                </div>
         </div>
     <div class = "box">
         <div class = "buttons">
