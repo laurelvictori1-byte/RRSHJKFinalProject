@@ -179,6 +179,7 @@ document.addEventListener("keydown", (event) => {
   }
   if (event.code === "Space") {
     jumpPress = true;
+    jumpSound.play();
   }
 });
 
@@ -192,7 +193,6 @@ document.addEventListener("keyup", (event) => {
   }
   if( event.code === "Space") {
     jumpPress = false;
-    jumpSound.play();
   }
 })
 
