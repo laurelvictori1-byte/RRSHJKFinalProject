@@ -53,7 +53,7 @@ const obstacles = [
   {
     x: 600,
     y: 0,
-    height: 500,
+    height: 550,
     width: 50,
   }
 ]
@@ -161,7 +161,7 @@ function moveGoober(){ // have movement using up and down for now until jump mec
  if(goober.y > canvas.height - goober.height){ // check for bottom bound. if y goes past this point
   goober.y = canvas.height - goober.height; // then we set the y position to that
   goober.jumping = false; // jumping bCK TO false
-  goober.yVelocity = 0; // and recent the velocity 
+  goober.yVelocity = 0; // and reset the velocity 
  }
 
 }
@@ -261,11 +261,11 @@ function detectObstacle(object){
 
 function gameOver(){
   cancelAnimationFrame(ani);
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
-  ctx.font = "50px Arial";
-  ctx.fillStyle = "red";
-  ctx.textAlign = "center";
-  ctx.fillText("Game Over", canvas.width / 2, canvas.height / 2);
+  //ctx.clearRect(0, 0, canvas.width, canvas.height);
+    goober.x = 0; // x and y starting position on canvas
+    goober.y = 680;
+    goober.jumping = false;
+    goober.yVelocity = 0; //goober jump speed
 }
 
 function gameLoop(){
