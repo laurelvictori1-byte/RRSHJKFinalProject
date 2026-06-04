@@ -73,6 +73,8 @@ const exit = document.getElementById("exit");
 const back = document.getElementById("back");
 const backGame = document.getElementById("backGame");
 
+const jumpSound = new Audio('audio/jumpsfx.mp3');
+const startGame = new Audio('audio/startGame.mp3');
 //draws our background image onto our canvas
 const backgroundImage = new Image();
 backgroundImage.src = "images/NYC-Menu-Background-Resized.png"; 
@@ -92,6 +94,7 @@ option.addEventListener('click', () =>{
 
 //when we press start, go to gameLoop and backgame button is now present
 start.addEventListener('click', () =>{
+   startGame.play();
     box.style.display = "none";
     backGame.style.display = "block";
     requestAnimationFrame(gameLoop);
@@ -189,6 +192,7 @@ document.addEventListener("keyup", (event) => {
   }
   if( event.code === "Space") {
     jumpPress = false;
+    jumpSound.play();
   }
 })
 
