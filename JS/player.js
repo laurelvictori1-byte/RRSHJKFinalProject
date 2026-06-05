@@ -16,7 +16,7 @@ class Goober {
         this.x = 0;
         this.y = 680;
         this.height = 40;
-        this.width = 30;
+        this.width = 50;
         this.speed = 5;
         this.jumping = false;
         this.yVelocity = 0;
