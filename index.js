@@ -12,6 +12,7 @@ const goober = {
     // add name if we want to track for a storyline maybe
 };
 
+
 const object = [
   { //initializes our platforms-- maybe rename
   x: 0,
@@ -170,6 +171,7 @@ backGame.addEventListener('click', () =>{
   cancelAnimationFrame(ani);
   ctx.clearRect(0, 0, canvas.width, canvas.height); 
   ctx.drawImage(backgroundImage, 0, 0, canvas.width, canvas.height);
+  gameOver();
 
 });
 
@@ -202,13 +204,16 @@ function addObstacle(){
 let rightPress = false;
 let leftPress = false;
 let jumpPress = false;
+let shiftPress = false;
 
 
 let gravity = 0.4; //sets our gravity to bring goober back down
 
 
 function moveGoober(){ // have movement using up and down for now until jump mechanic is figured out
-  
+   if(shiftPress){
+    goober.speed = 10;
+  }
     if(rightPress && goober.x < canvas.width- goober.width ) {
         goober.x += goober.speed;
     }
@@ -231,6 +236,7 @@ function moveGoober(){ // have movement using up and down for now until jump mec
   goober.yVelocity = 0; // and reset the velocity 
  }
 
+
 }
 // when we press the key, we set our variables to true
 document.addEventListener("keydown", (event) => {
@@ -245,6 +251,9 @@ document.addEventListener("keydown", (event) => {
     jumpPress = true;
     jumpSound.play();
   }
+  if (event.code === "Shift") {
+    shiftPress = true;
+  }
 });
 
 // when we lift up from our key, we set our variables to false
@@ -257,6 +266,9 @@ document.addEventListener("keyup", (event) => {
   }
   if( event.code === "Space") {
     jumpPress = false;
+  }
+  if (event.code === "Shift") {
+    shiftPress = false;
   }
 })
 
