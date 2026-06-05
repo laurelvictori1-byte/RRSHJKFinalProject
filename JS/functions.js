@@ -21,7 +21,7 @@ function moveGoober(){ // have movement using up and down for now until jump mec
    if(shiftPress){
     goober.speed = 10;
   }
-    if(rightPress && goober.x < canvas.width- goober.width ) {
+    if(rightPress && goober.x < canvas.width- goober.width ){
         goober.x += goober.speed;
     }
    if(leftPress && goober.x > 0) {
@@ -31,6 +31,7 @@ function moveGoober(){ // have movement using up and down for now until jump mec
    goober.yVelocity = -Math.sqrt(2* goober.jHeight *gravity); // we calculate jumpspeed or like the velocity of y
     goober.jumping = true; // and then set jumping to true
 
+    
  }
 
    // add gravity to move down
@@ -42,6 +43,7 @@ function moveGoober(){ // have movement using up and down for now until jump mec
   goober.jumping = false; // jumping bCK TO false
   goober.yVelocity = 0; // and reset the velocity 
  }
+ console.log(goober.yVelocity);
 }
 
 /*
@@ -125,7 +127,11 @@ function detectWin(win){
 }
 function winGame(){
     stopGameLoop(ani);
+    end.play();
     ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.font = "48px serif";
+    
+  ctx.fillText("You Win!", 10, 50);
 
   
   //   goober.x = -500; // x and y starting position on canvas

@@ -10,7 +10,6 @@
     // add name if we want to track for a storyline maybe
 };
 */
-
 class Goober {
     constructor(){
         this.x = 0;

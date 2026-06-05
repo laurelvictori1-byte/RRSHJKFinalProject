@@ -39,6 +39,8 @@ const backGame = document.getElementById("backGame");
 
 const jumpSound = new Audio('audio/jumpsfx.mp3');
 const startGame = new Audio('audio/startGame.mp3');
+const end = new Audio('audio/levelfinish.mp3');
+
 
 
 //draws our background image onto our canvas
