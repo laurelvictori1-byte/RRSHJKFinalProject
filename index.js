@@ -1,16 +1,4 @@
 
-// initializes our main character--goober
-const goober = {
-    x: 0, // x and y starting position on canvas
-    y: 680,
-    height: 40,
-    width: 30,
-    speed: 5,
-    jumping: false,
-    yVelocity: 0, //goober jump speed
-    jHeight: 90, // jump height
-    // add name if we want to track for a storyline maybe
-};
 
 
 const object = [
@@ -60,8 +48,10 @@ const obstacles = [
 ]
 
 
+
 const canvas = document.getElementById("canvas");
 const ctx = canvas.getContext("2d");
+
 
 
 
@@ -83,6 +73,10 @@ backgroundImage.onload = function() {
   ctx.drawImage(backgroundImage, 0, 0, canvas.width, canvas.height);
 };
 
+function addGoober(){ // green square for now. will replace with actual goober image
+    ctx.fillStyle = "green";
+    ctx.fillRect(goober.x, goober.y, goober.width, goober.height);
+}
 
 let ani;
 
@@ -118,10 +112,10 @@ back.addEventListener('click', () =>{
   box.style.display = "block";
 });
 
-function addGoober(){ // green square for now. will replace with actual goober image
-    ctx.fillStyle = "green";
-    ctx.fillRect(goober.x, goober.y, goober.width, goober.height);
-}
+//function addGoober(){ // green square for now. will replace with actual goober image
+  //  ctx.fillStyle = "green";
+    //ctx.fillRect(goober.x, goober.y, goober.width, goober.height);
+//}
 function addObject(){
   ctx.fillStyle = "black";
   object.forEach((object) => {
@@ -283,7 +277,6 @@ function gameOver(){
     goober.jumping = false;
     goober.yVelocity = 0; //goober jump speed
 }
-
 function gameLoop(){
   const backgroundImage = new Image();
   backgroundImage.src = "images/NYC-Background.png"; 
