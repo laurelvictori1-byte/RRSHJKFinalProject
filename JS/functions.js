@@ -12,6 +12,11 @@ function addObstacle(){
   });
 }
 
+function addWin(){
+    ctx.fillStyle = 'yellow';
+    ctx.fillRect(win.x, win.y, win.width, win.height);
+}
+
 function moveGoober(){ // have movement using up and down for now until jump mechanic is figured out
    if(shiftPress){
     goober.speed = 10;
@@ -60,9 +65,32 @@ function collision(object){
   } 
  });
 
+
  return colliding;
 }
 
+function collisionObstacles(obstacles){
+     let colliding = false;
+    obstacles.forEach((obstacles) => {
+  if(goober.x + goober.width >= obstacles.x && goober.x <= obstacles.width + obstacles.x && goober.y + goober.height >= obstacles.y && goober.y <= obstacles.y + obstacles.height){
+    console.log('colliding'); // shows us that its colliding in our console
+    colliding = true;
+    detectObstacle(object); // call the collision detection 
+  
+  } 
+ });
+  return colliding;
+}
+function collisionWin(win){
+     let colliding = false;
+    if(goober.x + goober.width >= win.x && goober.x <= win.width + win.x && goober.y + goober.height >= win.y && goober.y <= win.y + win.height){
+    console.log('colliding'); // shows us that its colliding in our console
+    colliding = true;
+    detectWin(win); // call the collision detection 
+  
+  } 
+   return colliding;
+}
 // detect overlap then push goober out 
 function detection(object){
   //checks for overlap
@@ -88,28 +116,25 @@ function detection(object){
   }
 }
 
-function collisionObstacle(object){ 
-  let colliding = false;
-  obstacles.forEach((obstacles) => {
-  if(goober.x + goober.width >= obstacles.x && goober.x <= obstacles.width + obstacles.x && goober.y + goober.height >= obstacles.y && goober.y <= obstacles.y + obstacles.height){
-    console.log('colliding'); // shows us that its colliding in our console
-    colliding = true;
-    detectObstacle(object); // call the collision detection 
-  
-  } 
- });
-  return colliding;
-}
-
-
 function detectObstacle(object){
   console.log('game over');
   gameOver();
 }
+function detectWin(win){
+    winGame();
+}
+function winGame(){
+    stopGameLoop(ani);
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
 
+  
+  //   goober.x = -500; // x and y starting position on canvas
+   // goober.y = -1000;
+
+}
 
 function gameOver(){
-  cancelAnimationFrame(ani);
+ // cancelAnimationFrame(ani);
   //ctx.clearRect(0, 0, canvas.width, canvas.height);
     goober.x = 0; // x and y starting position on canvas
     goober.y = 680;

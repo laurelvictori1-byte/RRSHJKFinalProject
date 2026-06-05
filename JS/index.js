@@ -1,5 +1,6 @@
 const canvas = document.getElementById("canvas");
 const ctx = canvas.getContext("2d");
+
 // track if we are pressing our keys
 let rightPress = false;
 let leftPress = false;
@@ -23,6 +24,10 @@ const obstacles = [
   {x: 870,y: 710,height: 4,width: 40,},
   {x: 880,y: 565,height: 4,width: 100,},
 ]
+
+const win =  {x: 700, y: 400, width: 40, height: 40};
+
+
 // getting a bunch of stuff from html file
 const start = document.getElementById("start");
 const option = document.getElementById("option");
@@ -45,20 +50,20 @@ backgroundImage.onload = function() {
 
 
 function gameLoop(){
-  const backgroundImage = new Image();
-  backgroundImage.src = "images/NYC-Background.png"; 
-  backgroundImage.onload = function() {
-    ctx.drawImage(backgroundImage, 0, 0, canvas.width, canvas.height);
-  };
-   // ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
     moveGoober();
     goober.draw();
     //addGoober();
     addObject();
     addObstacle();
     collision(object);
-    collisionObstacle(obstacles)
+    collisionObstacles(obstacles)
+   // collisionObstacle(obstacles)
+    addWin();
+     
     ani = requestAnimationFrame(gameLoop);
+    collisionWin(win)
+   
 };
 
 
