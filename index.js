@@ -32,19 +32,83 @@ const object = [
   height: 25,
   width: 130,
   },
+  {
+  x: 1180,
+  y: 660,
+  height: 25,
+  width: 100,
+  },
+  {
+  x: 1370,
+  y: 600,
+  height: 25,
+  width: 80,
+  },
+  {
+  x: 1418,
+  y: 515,
+  height: 25,
+  width: 35,
+  },
+  {
+  x: 1300,
+  y: 440,
+  height: 120,
+  width: 25,
+  },
+   {
+  x: 1240,
+  y: 440,
+  height: 25,
+  width: 85,
+  },
+  {
+  x: 1085,
+  y: 515,
+  height: 25,
+  width: 35,
+  },
+  // {
+  // x: 880,
+  // y: 445,
+  // height: 140,
+  // width: 25,
+  // },
+  {
+  x: 880,
+  y: 565,
+  height: 25,
+  width: 100,
+  },
+  {
+  x: 820,
+  y: 440,
+  height: 25,
+  width: 85,
+  },
 
-
-  
-  
 ];
 
 const obstacles = [
   {
-    x: 600,
-    y: 0,
-    height: 550,
-    width: 50,
-  }
+    x: 250,
+    y: 778,
+    height: 2,
+    width: 1600,
+  },
+  {
+  x: 870,
+  y: 710,
+  height: 4,
+  width: 40,
+  },
+   {
+  x: 880,
+  y: 565,
+  height: 4,
+  width: 100,
+  },
+
 ]
 
 
