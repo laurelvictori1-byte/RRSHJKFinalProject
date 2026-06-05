@@ -29,11 +29,11 @@
     <div id = "menu">
             <img src = "images/Options-Menu.png">
                 <div class="musiccontainer">
-                Music: <input type="range" min="1" max="100" value="75" class="slider" id="musicslider">
+                Music: <input type="range" min="1" max="100" value="75" id="music_slider" onchange="setVolume()">
                 </div>
 
                 <div class="sfxcontainer">
-                Sound: <input type="range" min="1" max="100" value="75" class="slider" id="sfxslider">
+                Sound: <input type="range" min="1" max="100" value="75" id="sfx_slider" onchange="setVolume()">
                 </div>
         </div>
     <div class = "box">
@@ -44,7 +44,8 @@
             <button id = "option">
                 <img src = "images/options-button.png">
             </button>
-            <button id = "exit"> 
+            <button id = "exit"
+                onclick="window.open('', '_self', ''); window.close();">
                 <img src = "images/quit-button.png">
             </button>
         </div>
@@ -52,6 +53,5 @@
     <button id = "back">back</button>
     <button id = "backGame">backGame</button>
     <audio id="hover" src="audio/hover.mp3"></audio>
-
 
 </body>

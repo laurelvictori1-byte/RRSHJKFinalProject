@@ -1,4 +1,3 @@
-
 // initializes our main character--goober
 const goober = {
     x: 0, // x and y starting position on canvas
@@ -58,11 +57,8 @@ const obstacles = [
   }
 ]
 
-
 const canvas = document.getElementById("canvas");
 const ctx = canvas.getContext("2d");
-
-
 
 // getting a bunch of stuff from html file
 const start = document.getElementById("start");

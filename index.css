@@ -70,7 +70,12 @@ html {
   left: 2vw;
 }
 
-.slider {
+#music_slider {
+  width: 60%; 
+  height: 1vh; 
+}
+
+#sfx_slider {
   width: 60%; 
   height: 1vh; 
 }
