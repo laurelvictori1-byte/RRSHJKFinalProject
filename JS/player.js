@@ -21,7 +21,7 @@ class Goober {
         this.yVelocity = 0;
         this.jHeight = 90;
         this.goob = new Image();
-        this.goob.src = 'images/Goob-Sprite.png';
+        this.goob.src = 'images/Goober-Run2.png';
     }
     draw(){
         ctx.drawImage(
