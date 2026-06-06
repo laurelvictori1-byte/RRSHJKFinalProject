@@ -96,5 +96,10 @@ html {
   
   position:absolute;
   display:none;
-  top: 5vh;
+  background-color: transparent;
+  border: none;
+  top: 2vh;
+  img {
+    height: 10vh;
+  }
 }
