@@ -131,7 +131,7 @@ function winGame(){
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     ctx.font = "48px serif";
     
-  ctx.fillText("You Win!", 10, 50);
+  ctx.fillText("You Win!", 600, 100);
 
   
   //   goober.x = -500; // x and y starting position on canvas
