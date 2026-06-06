@@ -81,7 +81,15 @@ html {
 }
 
 #back{
+  position: absolute;
+  bottom: 10vh;
+  left: 2vw;
   display:none;
+  background-color: transparent;
+  border: none;
+  img {
+    height: 10vh;
+  }
 }
 
 #backGame{
