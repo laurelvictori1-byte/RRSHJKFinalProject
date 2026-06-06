@@ -32,13 +32,24 @@
     </div>
     <div id = "menu">
             <img src = "images/Options-Menu.png">
-                <div class="musiccontainer">
-                Music: <input type="range" min="1" max="100" value="75" id="music_slider" onchange="setVolume()">
-                </div>
 
-                <div class="sfxcontainer">
-                Sound: <input type="range" min="1" max="100" value="75" id="sfx_slider" onchange="setVolume()">
-                </div>
+            <div id="musiccontainer">
+                <audio id="" class="music" src=""></audio>
+                <label for="music_slider">Music:</label>
+                <input type="range" id="music_slider" min="0" max="100" value="75">
+            </div>
+
+            <div id="sfxcontainer">
+                <audio id="click" class="sfx" src="audio/click1.mp3"></audio>
+                <audio id="hover" class="sfx" src="audio/hover.mp3"></audio>
+                <audio id="jump" class="sfx" src="audio/jumpsfx.mp3"></audio>
+                <audio id="landing" class="sfx" src="audio/landingJump.mp3"></audio>
+                <audio id="finish" class="sfx" src="audio/levelfinish.mp3"></audio>
+                <audio id="startG" class="sfx" src="audio/startGame.mp3"></audio>
+                <label for="sfx_slider">Sound:</label>
+                <input type="range" id="sfx_slider" min="0" max="100" value="75">
+            </div>
+                
         </div>
     <div class = "box">
         <div class = "buttons">
@@ -57,7 +68,5 @@
     <button id = "back">back</button>
     <button id = "backGame">backGame</button>
     <audio id="hover" src="audio/hover.mp3"></audio>
-
-
 
 </body>

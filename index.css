@@ -56,18 +56,18 @@ html {
   left: 35vw;
 }
 
-.musiccontainer {
+#musiccontainer {
   width: 100%;
   position: absolute;
   bottom: 55vh;
-  left: 2vw;
+  left: 3vw;
 }
 
-.sfxcontainer {
+#sfxcontainer {
   width: 100%;
   position: absolute;
   bottom: 50vh;
-  left: 2vw;
+  left: 3vw;
 }
 
 #music_slider {

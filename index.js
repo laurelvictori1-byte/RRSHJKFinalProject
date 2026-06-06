@@ -1,3 +1,4 @@
+console.log("chicken")
 // initializes our main character--goober
 const goober = {
     x: 0, // x and y starting position on canvas
@@ -69,6 +70,9 @@ const exit = document.getElementById("exit");
 const back = document.getElementById("back");
 const backGame = document.getElementById("backGame");
 
+const musicVolumeSlider = document.getElementById("music_slider");
+const sfxVolumeSlider = document.getElementById("sfx_slider");
+
 const jumpSound = new Audio('audio/jumpsfx.mp3');
 const startGame = new Audio('audio/startGame.mp3');
 //draws our background image onto our canvas
@@ -116,6 +120,7 @@ function addGoober(){ // green square for now. will replace with actual goober i
     ctx.fillStyle = "green";
     ctx.fillRect(goober.x, goober.y, goober.width, goober.height);
 }
+
 function addObject(){
   ctx.fillStyle = "black";
   object.forEach((object) => {
@@ -253,7 +258,6 @@ function collisionObstacle(object){
   return colliding;
 }
 
-
 function detectObstacle(object){
   console.log('game over');
   gameOver();
@@ -284,9 +288,22 @@ function gameLoop(){
     ani = requestAnimationFrame(gameLoop);
 };
 
-
 function stopGameLoop() {
   cancelAnimationFrame(ani);
 }
 
 //requestAnimationFrame(gameLoop);
+
+function setVolume(sfx, value) {
+  const audioElements = document.querySelectorAll(sfx);
+  console.log(audioElements);
+  console.log(`Setting volume for ${sfx} to ${value}`);
+  audioElements.forEach(audioElement => {
+    audioElement.volume = value / 100;
+  });
+}
+
+sfxVolumeSlider.addEventListener('input', () => {
+  setVolume(".sfx", sfxVolumeSlider.value);
+  console.log("im working!")
+});
