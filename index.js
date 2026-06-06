@@ -1,4 +1,3 @@
-console.log("chicken")
 // initializes our main character--goober
 const goober = {
     x: 0, // x and y starting position on canvas
