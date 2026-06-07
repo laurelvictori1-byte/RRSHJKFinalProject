@@ -80,7 +80,15 @@ html {
   height: 1vh; 
 }
 
-#back{
+#controls {
+  position: absolute;
+  bottom: 5vh;
+  img {
+    height: 50vh;
+  }
+}
+
+#back {
   position: absolute;
   bottom: 10vh;
   left: 2vw;
@@ -92,7 +100,7 @@ html {
   }
 }
 
-#backGame{
+#backGame {
   
   position:absolute;
   display:none;
