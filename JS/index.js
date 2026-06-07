@@ -61,7 +61,6 @@ backgroundImage.onload = function() {
   ctx.drawImage(backgroundImage, 0, 0, canvas.width, canvas.height);
 };
 
-
 function gameLoop(){
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     moveGoober();
