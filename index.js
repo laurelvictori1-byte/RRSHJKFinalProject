@@ -291,18 +291,15 @@ function stopGameLoop() {
   cancelAnimationFrame(ani);
 }
 
-//requestAnimationFrame(gameLoop);
-
-function setVolume(sfx, value) {
+function setVolume(sfx, volume) {
   const audioElements = document.querySelectorAll(sfx);
-  console.log(audioElements);
-  console.log(`Setting volume for ${sfx} to ${value}`);
-  audioElements.forEach(audioElement => {
-    audioElement.volume = value / 100;
-  });
+  for (let i = 0; i < audioElements.length; i++) {
+    audioElements[i].volume = volume / 100;
+  }
 }
 
-sfxVolumeSlider.addEventListener('input', () => {
-  setVolume(".sfx", sfxVolumeSlider.value);
-  console.log("im working!")
+sfxVolumeSlider.addEventListener('input', function() {
+  setVolume(".sfx", this.value);
 });
+
+//requestAnimationFrame(gameLoop);
