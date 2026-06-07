@@ -15,6 +15,8 @@ start.addEventListener('click', () =>{
 // goes back to title screen. BUG: Doesnt reset game only brings you back
 backGame.addEventListener('click', () =>{
   backGame.style.display = "none";
+  victoryScreen.style.display = "none";
+  canvas.style.display = "block";
   box.style.display = "block";
   cancelAnimationFrame(ani);
   ctx.clearRect(0, 0, canvas.width, canvas.height); 
