@@ -14,6 +14,18 @@ canvas{
         width: 99vw;
 }
 
+#victoryScreen{
+  display: none;
+  background-color: aliceblue;
+  background-image: url(images/Victory-Screen.png);
+        border: 1px solid black;
+        background-size: contain;  
+        background-repeat: no-repeat;
+        background-position: center;
+        height: 96.3vh;
+        width: 99vw;
+}
+
 html {
   font-family: "Bitcount Grid Double", system-ui;
   font-optical-sizing: auto;

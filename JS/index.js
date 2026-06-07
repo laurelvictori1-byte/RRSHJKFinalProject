@@ -44,11 +44,14 @@ const menu = document.getElementById("menu");
 const exit = document.getElementById("exit");
 const back = document.getElementById("back");
 const backGame = document.getElementById("backGame");
+const victoryScreen = document.getElementById("victoryScreen")
 
-const jumpSound = new Audio('audio/jumpsfx.mp3');
-const startGame = new Audio('audio/startGame.mp3');
-const end = new Audio('audio/levelfinish.mp3');
+const musicVolumeSlider = document.getElementById("music_slider");
+const sfxVolumeSlider = document.getElementById("sfx_slider");
 
+const jumpSound = document.getElementById('jump');
+const startGame = document.getElementById('startG');
+const end = document.getElementById('finish');
 
 
 //draws our background image onto our canvas
@@ -80,5 +83,16 @@ function gameLoop(){
 function stopGameLoop() {
   cancelAnimationFrame(ani);
 }
+
+function setVolume(sfx, volume) {
+  const audioElements = document.querySelectorAll(sfx);
+  for (let i = 0; i < audioElements.length; i++) {
+    audioElements[i].volume = volume / 100;
+  }
+}
+
+sfxVolumeSlider.addEventListener('input', function() {
+  setVolume(".sfx", this.value);
+});
 
 //requestAnimationFrame(gameLoop);

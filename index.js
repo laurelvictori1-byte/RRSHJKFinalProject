@@ -69,9 +69,6 @@ const exit = document.getElementById("exit");
 const back = document.getElementById("back");
 const backGame = document.getElementById("backGame");
 
-const musicVolumeSlider = document.getElementById("music_slider");
-const sfxVolumeSlider = document.getElementById("sfx_slider");
-
 const jumpSound = new Audio('audio/jumpsfx.mp3');
 const startGame = new Audio('audio/startGame.mp3');
 //draws our background image onto our canvas
@@ -105,7 +102,6 @@ backGame.addEventListener('click', () =>{
   cancelAnimationFrame(ani);
   ctx.clearRect(0, 0, canvas.width, canvas.height); 
   ctx.drawImage(backgroundImage, 0, 0, canvas.width, canvas.height);
-
 });
 
 // the back button taking us out of our options menu 
@@ -291,15 +287,5 @@ function stopGameLoop() {
   cancelAnimationFrame(ani);
 }
 
-function setVolume(sfx, volume) {
-  const audioElements = document.querySelectorAll(sfx);
-  for (let i = 0; i < audioElements.length; i++) {
-    audioElements[i].volume = volume / 100;
-  }
-}
-
-sfxVolumeSlider.addEventListener('input', function() {
-  setVolume(".sfx", this.value);
-});
 
 //requestAnimationFrame(gameLoop);
