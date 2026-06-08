@@ -52,6 +52,11 @@ const sfxVolumeSlider = document.getElementById("sfx_slider");
 const jumpSound = document.getElementById('jump');
 const startGame = document.getElementById('startG');
 const end = document.getElementById('finish');
+const hurtSound = document.getElementById('hurt');
+const musicbgm = document.getElementById('musicbgm');
+  window.onload = function() {
+    musicbgm.play()
+  };
 
 
 //draws our background image onto our canvas
@@ -68,7 +73,7 @@ function gameLoop(){
     //addGoober();
     addObject();
     addObstacle();
-    collision(object);
+    collision(object)
     collisionObstacles(obstacles)
    // collisionObstacle(obstacles)
     addWin();
@@ -90,8 +95,19 @@ function setVolume(sfx, volume) {
   }
 }
 
+function setOtherVolume(music, volume) {
+  const audioElements = document.querySelectorAll(music);
+  for (let i = 0; i < audioElements.length; i++) {
+    audioElements[i].volume = volume / 100;
+  }
+}
+
 sfxVolumeSlider.addEventListener('input', function() {
   setVolume(".sfx", this.value);
+});
+
+musicVolumeSlider.addEventListener('input', function() {
+  setOtherVolume(".music", this.value);
 });
 
 //requestAnimationFrame(gameLoop);

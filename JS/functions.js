@@ -121,6 +121,7 @@ function detection(object){
 
 function detectObstacle(object){
   console.log('game over');
+  hurtSound.play();
   gameOver();
 }
 function detectWin(win){
