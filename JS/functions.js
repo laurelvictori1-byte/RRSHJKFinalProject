@@ -13,8 +13,9 @@ function addObstacle(){
 }
 
 function addWin(){
-    ctx.fillStyle = 'yellow';
-    ctx.fillRect(win.x, win.y, win.width, win.height);
+  win.draw();
+    // ctx.fillStyle = 'yellow';
+    // ctx.fillRect(win.x, win.y, win.width, win.height);
 }
 
 function moveGoober(){ // have movement using up and down for now until jump mechanic is figured out
