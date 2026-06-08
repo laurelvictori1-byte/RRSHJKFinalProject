@@ -130,7 +130,6 @@ function winGame(){
     end.play();
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     ctx.font = "48px serif";
-    
   ctx.fillText("You Win!", 10, 50);
 
   
