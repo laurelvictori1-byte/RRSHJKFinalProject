@@ -8,6 +8,7 @@ let jumpPress = false;
 let shiftPress = false;
 let gravity = 0.4; //sets our gravity to bring goober back down
 let ani;
+let flip = false;
 
 const object = [
   {x: 0,y: 700,height: 300,width: 250,},{x: 450,y: 720,height: 25,width: 140,},

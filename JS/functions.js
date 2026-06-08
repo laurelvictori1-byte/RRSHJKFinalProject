@@ -23,9 +23,11 @@ function moveGoober(){ // have movement using up and down for now until jump mec
     goober.speed = 10;
   }
     if(rightPress && goober.x < canvas.width- goober.width ){
+      flipped = false;
         goober.x += goober.speed;
     }
    if(leftPress && goober.x > 0) {
+       flip = true;
         goober.x -= goober.speed;
     }
  if(jumpPress && !goober.jumping){ // if goober is not jumping and we are pressing space then

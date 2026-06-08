@@ -20,17 +20,36 @@ class Goober {
         this.jumping = false;
         this.yVelocity = 0;
         this.jHeight = 90;
+        this.direction = 0;
+        this.size=0;
         this.goob = new Image();
         this.goob.src = 'images/Goober-Run2.png';
+        this.goob2 = new Image();
+        this.goob2.src = 'images/Goob-Sprite.png';
     }
+   
     draw(){
+        if(flip){
+        
+            ctx.drawImage(
+                this.goob2,
+                this.x,
+                this.y,
+                this.width,
+                this.height
+            );
+            flip = false;
+        }
+        else if(!flip){
         ctx.drawImage(
+            
             this.goob,
             this.x,
             this.y,
             this.width,
             this.height
         );
+    }
     }
 }
 const goober = new Goober();
