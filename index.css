@@ -14,6 +14,18 @@ canvas{
         width: 99vw;
 }
 
+#victoryScreen{
+  display: none;
+  background-color: aliceblue;
+  background-image: url(images/Victory-Screen.png);
+        border: 1px solid black;
+        background-size: contain;  
+        background-repeat: no-repeat;
+        background-position: center;
+        height: 96.3vh;
+        width: 99vw;
+}
+
 html {
   font-family: "Bitcount Grid Double", system-ui;
   font-optical-sizing: auto;
@@ -52,41 +64,63 @@ html {
 #menu{
   position: absolute;
   display:none;
-  bottom: 6vh;  
+  bottom: 10vh;  
   left: 35vw;
 }
 
-.musiccontainer {
-  width: 100%;
+#organize {
   position: absolute;
-  bottom: 55vh;
+  display: flex;
+  flex-direction: column;
+  gap: 1vh;
+  bottom: 0.1vh;
   left: 2vw;
 }
 
-.sfxcontainer {
+#musiccontainer {
   width: 100%;
-  position: absolute;
-  bottom: 50vh;
-  left: 2vw;
+}
+
+#sfxcontainer {
+  width: 100%; 
 }
 
 #music_slider {
-  width: 60%; 
+  width: 70%; 
   height: 1vh; 
 }
 
 #sfx_slider {
-  width: 60%; 
+  width: 70%; 
   height: 1vh; 
 }
 
-#back{
-  display:none;
+#controls {
+  img {
+    height: 50vh;
+  }
 }
 
-#backGame{
+#back {
+  position: absolute;
+  bottom: 10vh;
+  left: 0.2vw;
+  display:none;
+  background-color: transparent;
+  border: none;
+  img {
+    height: 10vh;
+  }
+}
+
+#backGame {
   
   position:absolute;
   display:none;
-  top: 5vh;
+  background-color: transparent;
+  border: none;
+  top: 2vh;
+  img {
+    height: 10vh;
+  }
 }

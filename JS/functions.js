@@ -129,8 +129,11 @@ function winGame(){
     stopGameLoop(ani);
     end.play();
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-    ctx.font = "48px serif";
-  ctx.fillText("You Win!", 10, 50);
+    canvas.style.display = "none";
+    victoryScreen.style.display = "block";
+  //   ctx.font = "100px Bitcount Grid Double";
+    
+  // ctx.fillText("You Win!", 500, 100);
 
   
   //   goober.x = -500; // x and y starting position on canvas

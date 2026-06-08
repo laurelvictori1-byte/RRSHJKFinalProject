@@ -102,7 +102,6 @@ backGame.addEventListener('click', () =>{
   cancelAnimationFrame(ani);
   ctx.clearRect(0, 0, canvas.width, canvas.height); 
   ctx.drawImage(backgroundImage, 0, 0, canvas.width, canvas.height);
-
 });
 
 // the back button taking us out of our options menu 
@@ -116,6 +115,7 @@ function addGoober(){ // green square for now. will replace with actual goober i
     ctx.fillStyle = "green";
     ctx.fillRect(goober.x, goober.y, goober.width, goober.height);
 }
+
 function addObject(){
   ctx.fillStyle = "black";
   object.forEach((object) => {
@@ -253,7 +253,6 @@ function collisionObstacle(object){
   return colliding;
 }
 
-
 function detectObstacle(object){
   console.log('game over');
   gameOver();
@@ -284,9 +283,9 @@ function gameLoop(){
     ani = requestAnimationFrame(gameLoop);
 };
 
-
 function stopGameLoop() {
   cancelAnimationFrame(ani);
 }
+
 
 //requestAnimationFrame(gameLoop);
