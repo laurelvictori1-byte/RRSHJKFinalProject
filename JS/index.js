@@ -33,7 +33,7 @@ const obstacles = [
   {x: 1020, y: 125,height: 4,width: 50,}
 ]
 
-const win =  {x: 1380, y: 65, width: 40, height: 40};
+// const win =  {x: 1380, y: 65, width: 40, height: 40};
 
 
 // getting a bunch of stuff from html file

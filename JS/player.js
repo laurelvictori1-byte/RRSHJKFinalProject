@@ -34,3 +34,24 @@ class Goober {
     }
 }
 const goober = new Goober();
+
+class Win {
+    constructor(){
+        this.x = 1330;
+        this.y = 40; 
+        this.width = 100; 
+        this.height = 100;
+        this.bubblePipe = new Image();
+        this.bubblePipe.src = 'images/Bubble-Pipe.png';
+    }
+    draw(){
+        ctx.drawImage(
+            this.bubblePipe,
+            this.x,
+            this.y,
+            this.width,
+            this.height
+        );
+    }
+}
+const win = new Win();
