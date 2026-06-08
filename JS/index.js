@@ -55,9 +55,6 @@ const startGame = document.getElementById('startG');
 const end = document.getElementById('finish');
 const hurtSound = document.getElementById('hurt');
 const musicbgm = document.getElementById('musicbgm');
-  window.onload = function() {
-    musicbgm.play()
-  };
 
 
 //draws our background image onto our canvas
@@ -87,6 +84,12 @@ function gameLoop(){
 
 function stopGameLoop() {
   cancelAnimationFrame(ani);
+}
+
+function audioPlay() {
+  var audio = document.getElementById("musicbgm");
+  audio.play();
+  audio.loop = true;
 }
 
 function setVolume(sfx, volume) {
