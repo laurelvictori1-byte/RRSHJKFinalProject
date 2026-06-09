@@ -92,6 +92,7 @@ function audioPlay() {
 }
 function stop(){
   audio.pause();
+  audio.currentTime = 0;
 }
 
 function setVolume(sfx, volume) {
