@@ -1,14 +1,15 @@
 function addObject(){
-  ctx.fillStyle = "black";
-  object.forEach((object) => {
-    ctx.fillRect(object.x, object.y, object.width, object.height);
+  // ctx.fillStyle = "black";
+  object.forEach((obj) => {
+    obj.draw();
   });
 }
 
 function addObstacle(){
-  ctx.fillStyle = "red";
-  obstacles.forEach((obstacles) => {
-    ctx.fillRect(obstacles.x, obstacles.y, obstacles.width, obstacles.height);
+  // ctx.fillStyle = "red";
+  obstacles.forEach((obs) => {
+    obs.draw();
+    // ctx.fillRect(obstacles.x, obstacles.y, obstacles.width, obstacles.height);
   });
 }
 
