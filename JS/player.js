@@ -110,7 +110,7 @@ const objects = [
 ];
 
 const object = [];
-objects.forEach((item, _) => {
+objects.forEach((item) => {
 
     // pick proper img
     if (item.width > 250 ){
@@ -160,7 +160,7 @@ const obstacle = [
 ];
 
 const obstacles = [];
-obstacle.forEach((item, _) => {
+obstacle.forEach((item) => {
         img = "images/Acid-Puddle.png";
 
     obs = new Obstacles(item.x, item.y - 35, item.width, item.height * 20, img);
