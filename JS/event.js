@@ -41,7 +41,7 @@ document.addEventListener("keydown", (event) => {
   if (event.code === "ArrowLeft") {
     leftPress = true;
   }
-  if (event.code === "Space") {
+  if (event.code === "Space" || event.code === "ArrowUp") {
     jumpPress = true;
     jumpSound.play();
   }
@@ -58,7 +58,7 @@ document.addEventListener("keyup", (event) => {
   if (event.code === "ArrowLeft") {
     leftPress = false;
   }
-  if( event.code === "Space") {
+  if( event.code === "Space" || event.code === "ArrowUp") {
     jumpPress = false;
   }
   if (event.code === "Shift") {
