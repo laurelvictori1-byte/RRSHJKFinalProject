@@ -85,36 +85,5 @@ function gameLoop(){
 function stopGameLoop() {
   cancelAnimationFrame(ani);
 }
-let audio = document.getElementById("musicbgm");
-function audioPlay() {
-  audio.play();
-  audio.loop = true;
-}
-function stop(){
-  audio.pause();
-  audio.currentTime = 0;
-}
-
-function setVolume(sfx, volume) {
-  const audioElements = document.querySelectorAll(sfx);
-  for (let i = 0; i < audioElements.length; i++) {
-    audioElements[i].volume = volume / 100;
-  }
-}
-
-function setOtherVolume(music, volume) {
-  const audioElements = document.querySelectorAll(music);
-  for (let i = 0; i < audioElements.length; i++) {
-    audioElements[i].volume = volume / 100;
-  }
-}
-
-sfxVolumeSlider.addEventListener('input', function() {
-  setVolume(".sfx", this.value);
-});
-
-musicVolumeSlider.addEventListener('input', function() {
-  setOtherVolume(".music", this.value);
-});
 
 //requestAnimationFrame(gameLoop);
