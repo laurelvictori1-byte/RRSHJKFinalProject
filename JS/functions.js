@@ -135,6 +135,7 @@ function winGame(){
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     canvas.style.display = "none";
     victoryScreen.style.display = "block";
+    stop();
   //   ctx.font = "100px Bitcount Grid Double";
     
   // ctx.fillText("You Win!", 500, 100);
