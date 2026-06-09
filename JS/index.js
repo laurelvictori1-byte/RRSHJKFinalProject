@@ -85,11 +85,13 @@ function gameLoop(){
 function stopGameLoop() {
   cancelAnimationFrame(ani);
 }
-
+let audio = document.getElementById("musicbgm");
 function audioPlay() {
-  var audio = document.getElementById("musicbgm");
   audio.play();
   audio.loop = true;
+}
+function stop(){
+  audio.pause();
 }
 
 function setVolume(sfx, volume) {

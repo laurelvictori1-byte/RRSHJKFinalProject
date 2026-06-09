@@ -21,7 +21,7 @@ backGame.addEventListener('click', () =>{
   cancelAnimationFrame(ani);
   ctx.clearRect(0, 0, canvas.width, canvas.height); 
   ctx.drawImage(backgroundImage, 0, 0, canvas.width, canvas.height);
-  gameOver();
+  //gameOver();
 
 });
 
