@@ -8,6 +8,7 @@ let jumpPress = false;
 let shiftPress = false;
 let gravity = 0.4; //sets our gravity to bring goober back down
 let ani;
+let flip = false;
 
 // const win =  {x: 1380, y: 65, width: 40, height: 40};
 
@@ -60,33 +61,5 @@ function gameLoop(){
 function stopGameLoop() {
   cancelAnimationFrame(ani);
 }
-
-function audioPlay() {
-  var audio = document.getElementById("musicbgm");
-  audio.play();
-  audio.loop = true;
-}
-
-function setVolume(sfx, volume) {
-  const audioElements = document.querySelectorAll(sfx);
-  for (let i = 0; i < audioElements.length; i++) {
-    audioElements[i].volume = volume / 100;
-  }
-}
-
-function setOtherVolume(music, volume) {
-  const audioElements = document.querySelectorAll(music);
-  for (let i = 0; i < audioElements.length; i++) {
-    audioElements[i].volume = volume / 100;
-  }
-}
-
-sfxVolumeSlider.addEventListener('input', function() {
-  setVolume(".sfx", this.value);
-});
-
-musicVolumeSlider.addEventListener('input', function() {
-  setOtherVolume(".music", this.value);
-});
 
 //requestAnimationFrame(gameLoop);

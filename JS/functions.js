@@ -24,9 +24,11 @@ function moveGoober(){ // have movement using up and down for now until jump mec
     goober.speed = 10;
   }
     if(rightPress && goober.x < canvas.width- goober.width ){
+      flipped = false;
         goober.x += goober.speed;
     }
    if(leftPress && goober.x > 0) {
+       flip = true;
         goober.x -= goober.speed;
     }
  if(jumpPress && !goober.jumping){ // if goober is not jumping and we are pressing space then
@@ -134,6 +136,7 @@ function winGame(){
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     canvas.style.display = "none";
     victoryScreen.style.display = "block";
+    stop();
   //   ctx.font = "100px Bitcount Grid Double";
     
   // ctx.fillText("You Win!", 500, 100);
@@ -152,3 +155,35 @@ function gameOver(){
     goober.jumping = false;
     goober.yVelocity = 0; //goober jump speed
 }
+
+let audio = document.getElementById("musicbgm");
+function audioPlay() {
+  audio.play();
+  audio.loop = true;
+}
+function stop(){
+  audio.pause();
+  audio.currentTime = 0;
+}
+
+function setVolume(sfx, volume) {
+  const audioElements = document.querySelectorAll(sfx);
+  for (let i = 0; i < audioElements.length; i++) {
+    audioElements[i].volume = volume / 100;
+  }
+}
+
+function setOtherVolume(music, volume) {
+  const audioElements = document.querySelectorAll(music);
+  for (let i = 0; i < audioElements.length; i++) {
+    audioElements[i].volume = volume / 100;
+  }
+}
+
+sfxVolumeSlider.addEventListener('input', function() {
+  setVolume(".sfx", this.value);
+});
+
+musicVolumeSlider.addEventListener('input', function() {
+  setOtherVolume(".music", this.value);
+});
