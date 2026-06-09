@@ -20,14 +20,13 @@ class Goober {
         this.jumping = false;
         this.yVelocity = 0;
         this.jHeight = 90;
-        this.direction = 0;
-        this.size=0;
+       // this.direction = 0;
+        //this.size=0;
         this.goob = new Image();
         this.goob.src = 'images/Goober-Run2.png';
         this.goob2 = new Image();
         this.goob2.src = 'images/Goob-Sprite.png';
     }
-   
     draw(){
         if(flip){
         
@@ -162,12 +161,7 @@ const obstacle = [
 
 const obstacles = [];
 obstacle.forEach((item, _) => {
-    if (item.width > 1) {
         img = "images/Acid-Puddle.png";
-    }
-    else {
-        img = "images/Acid-Puddle.png";
-    }
 
     obs = new Obstacles(item.x, item.y - 35, item.width, item.height * 20, img);
 
