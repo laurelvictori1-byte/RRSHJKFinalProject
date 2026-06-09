@@ -75,11 +75,11 @@ class Win {
 const win = new Win();
 
 class Object {
-    constructor(x_in, y_in, w_in, h_in, img){
-        this.x = x_in;
-        this.y= y_in;
-        this.width = w_in; 
-        this.height = h_in;
+    constructor(x, y, width, height, img){
+        this.x = x;
+        this.y= y;
+        this.width = width; 
+        this.height = height;
         this.image = new Image();
         this.image.src = img;
     }
@@ -111,8 +111,6 @@ const objects = [
 
 const object = [];
 objects.forEach((item) => {
-
-    // pick proper img
     if (item.width > 250 ){
         img = "images/Pigeon4.png";
     } else if (item.width > 125) {
@@ -123,20 +121,17 @@ objects.forEach((item) => {
         img = "images/Pigeon1.png";
     }
 
-    // make temp object
     obj = new Object(item.x, item.y, item.width, item.height, img);
-
-    // add object to list
     object.push(obj);
 
 });
 
 class Obstacles {
-    constructor(x_in, y_in, w_in, h_in, img) {
-        this.x = x_in;
-        this.y= y_in;
-        this.width = w_in; 
-        this.height = h_in;
+    constructor(x, y, width, height, img) {
+        this.x = x;
+        this.y= y;
+        this.width = width; 
+        this.height = height;
         this.image = new Image();
         this.image.src = img;
     }
@@ -162,8 +157,11 @@ const obstacle = [
 const obstacles = [];
 obstacle.forEach((item) => {
         img = "images/Acid-Puddle.png";
-
-    obs = new Obstacles(item.x, item.y - 35, item.width, item.height * 20, img);
+if(item.width > 150){
+     obs = new Obstacles(item.x, item.y - 35, item.width, item.height * 20, img);
+}else{
+    obs = new Obstacles(item.x, item.y - 30, item.width, item.height * 20, img);
+}
 
     obstacles.push(obs);
 
