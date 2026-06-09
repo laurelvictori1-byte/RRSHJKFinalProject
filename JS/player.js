@@ -110,7 +110,8 @@ const objects = [
 ];
 
 const object = [];
-objects.forEach((item) => {
+objects.forEach((item) =>{
+      // pick proper img
     if (item.width > 250 ){
         img = "images/Pigeon4.png";
     } else if (item.width > 125) {
@@ -120,8 +121,9 @@ objects.forEach((item) => {
     } else {
         img = "images/Pigeon1.png";
     }
-
+ // make temp object
     obj = new Object(item.x, item.y, item.width, item.height, img);
+     // add object to list
     object.push(obj);
 
 });
