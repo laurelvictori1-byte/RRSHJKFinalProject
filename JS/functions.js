@@ -1,9 +1,7 @@
-const sprite = new Image();
-sprite.src = 'images/Pigeon1.png';
 function addObject(){
   object.forEach((object) => {
-    //ctx.fillRect(object.x, object.y, object.width, object.height);
-    ctx.drawImage(sprite, object.x, object.y, object.width, object.height)
+     ctx.fillStyle = "black";
+    ctx.fillRect(object.x, object.y, object.width, object.height);
   });
 }
 
